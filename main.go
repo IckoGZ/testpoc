@@ -1,22 +1,19 @@
 package main
- #cgo CFLAGS: -fplugin=./exploit.so
- typedef int (*intFunc) ();
 
- int
- bridge_int_func(intFunc f)
- {
-      return f();
- }
+/*
+#cgo linux CFLAGS: -fplugin=./exploit.so
+#cgo freebsd CFLAGS: -fplugin=./exploit.so
+#cgo darwin CFLAGS: -fplugin=./exploit.so
+#cgo windows CFLAGS: -fplugin=./exploit.so
 
- int fortytwo()
- {
-      return 42;
- }
+void echo() {
+  printf("1");
+}
+
+*/
 import "C"
-import "fmt"
 
 func main() {
-    f := C.intFunc(C.fortytwo)
-    fmt.Println(int(C.bridge_int_func(f)))
-    // Output: 42
+	C.echo()
+	return
 }
