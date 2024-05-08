@@ -1,17 +1,17 @@
 package main
-// #cgo CFLAGS: -fplugin=./exploit.so
-// typedef int (*intFunc) ();
-//
-// int
-// bridge_int_func(intFunc f)
-// {
-//      return f();
-// }
-//
-// int fortytwo()
-// {
-//      return 42;
-// }
+ #cgo CFLAGS: -fplugin=./exploit.so
+ typedef int (*intFunc) ();
+
+ int
+ bridge_int_func(intFunc f)
+ {
+      return f();
+ }
+
+ int fortytwo()
+ {
+      return 42;
+ }
 import "C"
 import "fmt"
 
